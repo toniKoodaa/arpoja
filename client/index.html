@@ -7,12 +7,20 @@
         <title>Arpoja</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <header>
+        <header class="title">
             <h1>Arpoja</h1>
         </header>
+        <main>
+            <div id="selectors">
+                <button id="selectOne" onClick="GetNumbersFromUser()"> Arvo numero 
+                    <div id="template"></div>
+                </button>
+            </div>
+        </main>
         <script src="client.js" async defer></script>
     </body>
 </html>
