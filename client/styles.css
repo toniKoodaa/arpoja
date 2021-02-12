@@ -16,4 +16,19 @@
 
 #resultH1 {
     text-align: center;
+    font-size: xx-large;
+}
+
+#numbersForm {
+    padding: 5px;
+}
+
+#numbersInput {
+    margin: 2px;
+}
+
+#progressBar {
+    width: 1%;
+    height: 20px;
+    background-color: aqua;
 }
