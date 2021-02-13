@@ -1,24 +1,18 @@
-let time = 0;
+let selected = false;
 
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function progress() {
-    time++;
-    console.log(time);
-    if (time > 100) {
-        setTimeout(function() {element.remove()}, timer);
-    }
-}
-
-function removeElement(element, timer) {
-    let everyTime = setInterval(progress(), 10);
-    //setTimeout(function() {element.remove()}, timer);
+function removeElement(element) {
+    element.remove();
 }
 
 
 function GetRandomNumberBetween() {
+    if (selected) {
+        document.querySelector("#template").innerHTML = "";
+    }
     const form = document.createElement("form");
     form.setAttribute("id", "numbersForm");
     form.setAttribute("method", "get");
@@ -41,6 +35,7 @@ function GetRandomNumberBetween() {
     form.appendChild(button);
 
     document.querySelector("#template").appendChild(form);
+    selected = true;
 
     form.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -57,8 +52,5 @@ function GetRandomNumberBetween() {
         const myBar = document.createElement("div");
         myBar.setAttribute("id", "progressBar");
         form.appendChild(resultText);
-
-
-        removeElement(form, 3000);
     })
 }
