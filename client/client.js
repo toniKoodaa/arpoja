@@ -1,4 +1,5 @@
 let selected = false;
+let selectedInner = false;
 
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
@@ -8,6 +9,18 @@ function removeElement(element) {
     element.remove();
 }
 
+function GetRandomNumberBetweenNumbers(max) {
+    if (selected) {
+        document.querySelector("#template").innerHTML = "";
+    }
+    let min = 1;
+    const resultNumber = getRndInteger(min, max + 1);
+    const resultText = document.createElement("h1");
+    resultText.setAttribute("id", "resultH1");
+    resultText.innerText = `${resultNumber}`; 
+    document.querySelector("#template").appendChild(resultText);
+    selected = true;
+}
 
 function GetRandomNumberBetween() {
     if (selected) {
@@ -39,6 +52,9 @@ function GetRandomNumberBetween() {
 
     form.addEventListener('submit', (event) => {
         event.preventDefault();
+        if (selectedInner) {
+            document.querySelector("#form").innerHTML = "";
+        }
         const formData = new FormData(form);
         const min = Number.parseInt(formData.get('firstNumber'));
         const max = Number.parseInt(formData.get('secondNumber'));
@@ -52,5 +68,6 @@ function GetRandomNumberBetween() {
         const myBar = document.createElement("div");
         myBar.setAttribute("id", "progressBar");
         form.appendChild(resultText);
+        selectedInner = true;
     })
 }
