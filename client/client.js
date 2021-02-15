@@ -1,30 +1,34 @@
+// value to check if element needs to be cleared before new input
 let selected = false;
-let selectedInner = false;
 
+// Create or select needed elements
+const template = document.querySelector("#template");
+const resultText = document.createElement("h1");
+resultText.setAttribute("id", "resultH1");
+
+// get pseudorandom between min and max
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function removeElement(element) {
-    element.remove();
-}
-
+// Preselected values for common random picks (1-10 and 1-100)
 function GetRandomNumberBetweenNumbers(max) {
     if (selected) {
-        document.querySelector("#template").innerHTML = "";
+        template.innerHTML = "";
     }
     let min = 1;
     const resultNumber = getRndInteger(min, max + 1);
     const resultText = document.createElement("h1");
     resultText.setAttribute("id", "resultH1");
     resultText.innerText = `${resultNumber}`; 
-    document.querySelector("#template").appendChild(resultText);
+    template.appendChild(resultText);
     selected = true;
 }
 
+// Return random from user given range - form is dynamically created
 function GetRandomNumberBetween() {
     if (selected) {
-        document.querySelector("#template").innerHTML = "";
+        template.innerHTML = "";
     }
     const form = document.createElement("form");
     form.setAttribute("id", "numbersForm");
@@ -47,27 +51,20 @@ function GetRandomNumberBetween() {
     form.appendChild(secondNumber);
     form.appendChild(button);
 
-    document.querySelector("#template").appendChild(form);
+    template.appendChild(form);
     selected = true;
 
     form.addEventListener('submit', (event) => {
         event.preventDefault();
-        if (selectedInner) {
-            document.querySelector("#form").innerHTML = "";
-        }
+        
         const formData = new FormData(form);
         const min = Number.parseInt(formData.get('firstNumber'));
         const max = Number.parseInt(formData.get('secondNumber'));
 
         const resultNumber = getRndInteger(min, max + 1);
-        const resultText = document.createElement("h1");
         resultText.setAttribute("id", "resultH1");
         resultText.innerText = `${resultNumber}`; 
         form.appendChild(resultText);
 
-        const myBar = document.createElement("div");
-        myBar.setAttribute("id", "progressBar");
-        form.appendChild(resultText);
-        selectedInner = true;
     })
 }
