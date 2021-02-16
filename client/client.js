@@ -9,7 +9,7 @@ function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-// Preselected values for common random picks (1-10 and 1-100)
+// get pseudorandom values for common random picks (like 1-10 and 1-100)
 function GetRandomNumberBetweenNumbers(max) {
     template.innerHTML = "";
     let min = 1;
@@ -19,7 +19,7 @@ function GetRandomNumberBetweenNumbers(max) {
     template.appendChild(resultText);
 }
 
-// Return random from user given range - form is dynamically created
+// Return pseudorandom from user given range - form is dynamically created
 function GetRandomNumberBetween() {
     template.innerHTML = "";
     
@@ -51,7 +51,6 @@ function GetRandomNumberBetween() {
 
     form.addEventListener('submit', (event) => {
         event.preventDefault();
-        
         const formData = new FormData(form);
         const min = Number.parseInt(formData.get('firstNumber'));
         const max = Number.parseInt(formData.get('secondNumber'));
@@ -60,6 +59,5 @@ function GetRandomNumberBetween() {
         resultText.setAttribute("id", "resultH1");
         resultText.innerText = `${resultNumber}`; 
         form.appendChild(resultText);
-
     })
 }
