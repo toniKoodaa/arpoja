@@ -15,15 +15,29 @@
     align-items: center;
 }
 
-#template {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+#selectOne {
+    display: grid;
+    grid-template-columns: auto;
+    margin: 0.5em;
+    width: 50vw;
 }
 
-#resultH1 {
+#template {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#results {
+    text-align: center;
+}
+
+#forms {
+    display: flex;
+    justify-content: center;
 }
 
 #numbersForm {
