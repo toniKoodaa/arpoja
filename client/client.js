@@ -4,11 +4,21 @@ const templateElm = document.querySelector("#template");
 const formsElm = document.querySelector("#forms");
 const resultElm = document.querySelector("#results");
 const selectorsElm = document.querySelector("#selectors");
+const listElm = document.querySelector("#list");
+const body = document.querySelector('body');
 
+
+function clearNeededElements() {
+    templateElm.innerHTML = "";
+    formsElm.innerHTML = "";
+    resultElm.innerHTML = "";
+    listElm.innerHTML = "";
+}
 // get pseudorandom between min and max
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
+
 
 function buttonMaker(text, doWhenClicked) {
     const button = document.createElement('button');
@@ -19,9 +29,7 @@ function buttonMaker(text, doWhenClicked) {
 }
 
 function numbersPage() {
-    templateElm.innerHTML = "";
-    formsElm.innerHTML = "";
-    resultElm.innerHTML = "";
+    clearNeededElements();
     const buttonOne = buttonMaker("Arvo numero 1 - 2 välillä", "GetRandomBetweenNumbers(2)");
     const buttonTwo = buttonMaker("Arvo numero 1 - 10 välillä", "GetRandomBetweenNumbers(10)");
     const buttonThree = buttonMaker("Arvo numero 1 - 100 välillä", "GetRandomBetweenNumbers(100)");
@@ -30,9 +38,7 @@ function numbersPage() {
 }
 
 function dicesPage() {
-    templateElm.innerHTML = "";
-    formsElm.innerHTML = "";
-    resultElm.innerHTML = "";
+    clearNeededElements();
     const buttonOne = buttonMaker("1D4", "GetRandomBetweenNumbers(4)");
     const buttonTwo = buttonMaker("1D6", "GetRandomBetweenNumbers(6)");
     const buttonThree = buttonMaker("1D8", "GetRandomBetweenNumbers(8)");
@@ -40,6 +46,35 @@ function dicesPage() {
     const buttonFive = buttonMaker("1D12", "GetRandomBetweenNumbers(12)");
     const buttonSix = buttonMaker("1D20", "GetRandomBetweenNumbers(20)");
     templateElm.append(buttonOne, buttonTwo, buttonThree, buttonFore, buttonFive, buttonSix);
+}
+
+function pickWinnerPage() {
+    clearNeededElements();
+    participants = [];
+    const form = document.createElement("form");
+    form.setAttribute("id", "participantForm")
+
+    const name = document.createElement("input");
+    name.setAttribute("id", "nameInput");
+    name.setAttribute("type", "text");
+    name.setAttribute("name", "nameData");
+    name.setAttribute("placeholder", "osallistuja");
+    
+    form.appendChild(name);
+    formsElm.appendChild(form);
+    const ul = document.createElement('ul');
+    ul.setAttribute("id", "liststyle");
+    listElm.appendChild(ul);
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const name = formData.get('nameData');
+        participants.push(name);
+        let li = document.createElement('li');
+        ul.appendChild(li);
+        li.innerHTML = name;
+    })
 }
 
 // get pseudorandom values for common random picks (like 1-10 and 1-100)
@@ -55,7 +90,7 @@ function GetRandomBetweenUserGiven() {
 
     const form = document.createElement("form");
     form.setAttribute("id", "numbersForm");
-    form.setAttribute("method", "get");
+    //form.setAttribute("method", "get");
 
     const firstNumber = document.createElement("input");
     firstNumber.setAttribute("id", "numbersInput");
