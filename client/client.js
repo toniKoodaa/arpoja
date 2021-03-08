@@ -8,7 +8,7 @@ const listElm = document.querySelector("#list");
 const body = document.querySelector('body');
 
 
-function clearNeededElements() {
+function clearElements() {
     templateElm.innerHTML = "";
     formsElm.innerHTML = "";
     resultElm.innerHTML = "";
@@ -19,26 +19,34 @@ function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-
 function buttonMaker(text, doWhenClicked) {
     const button = document.createElement('button');
-    button.setAttribute("id", "selectOne");
+    button.setAttribute("id", "buttons");
+    button.setAttribute("class", "gridItem")
     button.setAttribute("onClick", doWhenClicked);
     button.innerText = text.toString();
     return button;
 }
 
+function giveWinner(obj) {
+    clearElements();
+    const ul = document.createElement('ul');
+    ul.setAttribute("id", "liststyle");
+    obj.sort((a,b) => a.value - b.value);
+    resultElm.innerText = `${obj[0].name}`;
+}
+
 function numbersPage() {
-    clearNeededElements();
-    const buttonOne = buttonMaker("Arvo numero 1 - 2 välillä", "GetRandomBetweenNumbers(2)");
-    const buttonTwo = buttonMaker("Arvo numero 1 - 10 välillä", "GetRandomBetweenNumbers(10)");
-    const buttonThree = buttonMaker("Arvo numero 1 - 100 välillä", "GetRandomBetweenNumbers(100)");
-    const buttonFore = buttonMaker("Arvo numero kahden luvun välillä", "GetRandomBetweenUserGiven()");
+    clearElements();
+    const buttonOne = buttonMaker("Arvo 1 - 2 välillä", "GetRandomBetweenNumbers(2)");
+    const buttonTwo = buttonMaker("Arvo 1 - 10 välillä", "GetRandomBetweenNumbers(10)");
+    const buttonThree = buttonMaker("Arvo 1 - 100 välillä", "GetRandomBetweenNumbers(100)");
+    const buttonFore = buttonMaker("Arvo kahden luvun välillä", "GetRandomBetweenUserGiven()");
     templateElm.append(buttonOne, buttonTwo, buttonThree, buttonFore);
 }
 
 function dicesPage() {
-    clearNeededElements();
+    clearElements();
     const buttonOne = buttonMaker("1D4", "GetRandomBetweenNumbers(4)");
     const buttonTwo = buttonMaker("1D6", "GetRandomBetweenNumbers(6)");
     const buttonThree = buttonMaker("1D8", "GetRandomBetweenNumbers(8)");
@@ -49,7 +57,8 @@ function dicesPage() {
 }
 
 function pickWinnerPage() {
-    clearNeededElements();
+    clearElements();
+    buttonIsActive = false;
     participants = [];
     const form = document.createElement("form");
     form.setAttribute("id", "participantForm")
@@ -58,7 +67,10 @@ function pickWinnerPage() {
     name.setAttribute("id", "nameInput");
     name.setAttribute("type", "text");
     name.setAttribute("name", "nameData");
-    name.setAttribute("placeholder", "osallistuja");
+    name.setAttribute("placeholder", "lisää osallistuja");
+    name.setAttribute("focus", "true");
+
+    const button = buttonMaker("Arvo voittaja", `giveWinner(participants)`);
     
     form.appendChild(name);
     formsElm.appendChild(form);
@@ -66,14 +78,25 @@ function pickWinnerPage() {
     ul.setAttribute("id", "liststyle");
     listElm.appendChild(ul);
 
+
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         const formData = new FormData(form);
         const name = formData.get('nameData');
-        participants.push(name);
+        const value = Math.random();
+        const obj = {
+            "name": name,
+            "value": value
+        }
+        participants.push(obj);
         let li = document.createElement('li');
+        li.setAttribute("class", "listItem");
         ul.appendChild(li);
         li.innerHTML = name;
+        if (participants.length >= 2 && buttonIsActive === false) {
+            buttonIsActive = true;
+            resultElm.appendChild(button);
+        }
     })
 }
 
@@ -86,7 +109,7 @@ function GetRandomBetweenNumbers(max) {
 
 // Return pseudorandom from user given range - form is dynamically created
 function GetRandomBetweenUserGiven() {
-    formsElm.innerHTML = "";
+    clearElements();
 
     const form = document.createElement("form");
     form.setAttribute("id", "numbersForm");

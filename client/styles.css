@@ -15,31 +15,34 @@
     align-items: center;
 }
 
-#selectOne {
+.gridWrapper {
     display: grid;
-    grid-template-columns: auto;
-    margin: 0.5em;
-    width: 50vw;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0.1em;
+    grid-gap: 0.1em;
 }
 
-#list {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: start;
-    list-style: decimal;
+.gridItem {
+    margin: 0.1em;
+    width: auto;
+    height: 100px;
 }
 
-#template {
+#liststyle {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
     justify-content: center;
-    margin-top: 10px;
+    align-items: center;
+    list-style-type: none;
+}
+
+.listItem {
+    display: flex;
 }
 
 #results {
+    display: flex;
+    justify-content: center;
     text-align: center;
 }
 
@@ -48,7 +51,7 @@
     justify-content: center;
 }
 
-#numbersForm {
+#numbersForm #participantForm {
     padding: 5px;
     flex-direction: row;
     justify-content: center;
@@ -57,9 +60,4 @@
 #numbersInput {
     margin: 2px;
 }
-
-#progressBar {
-    width: 1%;
-    height: 20px;
-    background-color: aqua;
-}
+*/
