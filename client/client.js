@@ -6,7 +6,12 @@ const resultElm = document.querySelector("#results");
 const selectorsElm = document.querySelector("#selectors");
 const listElm = document.querySelector("#list");
 const body = document.querySelector('body');
-const sound = new Audio("./sounds/clickNoNoise.mp3")
+const sound = new Audio("./sounds/PS5click.mp3")
+
+function playSound() {
+    sound.currentTime = 0;
+    sound.play();
+}
 
 
 function clearElements() {
@@ -17,7 +22,7 @@ function clearElements() {
 }
 // get pseudorandom between min and max
 function getRndInteger(min, max) {
-    sound.play();
+    playSound();
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
@@ -31,8 +36,7 @@ function buttonMaker(text, doWhenClicked) {
 }
 
 function showWinner(obj) {
-    sound.currentTime=0;
-    sound.play();
+    playSound();
     clearElements();
     const ul = document.createElement('ul');
     ul.setAttribute("class", "winnerList");
@@ -51,7 +55,7 @@ function showWinner(obj) {
 }
 
 function numbersPage() {
-    sound.play();
+    playSound();
     clearElements();
     const buttonOne = buttonMaker("Arvo 1 - 2 välillä", "GetRandomBetweenNumbers(2)");
     const buttonTwo = buttonMaker("Arvo 1 - 10 välillä", "GetRandomBetweenNumbers(10)");
@@ -61,7 +65,7 @@ function numbersPage() {
 }
 
 function dicesPage() {
-    sound.play();
+    playSound();
     clearElements();
     const buttonOne = buttonMaker("1D4", "GetRandomBetweenNumbers(4)");
     const buttonTwo = buttonMaker("1D6", "GetRandomBetweenNumbers(6)");
@@ -73,7 +77,7 @@ function dicesPage() {
 }
 
 function pickWinnerPage() {
-    sound.play();
+    playSound();
     clearElements();
     buttonIsActive = false;
     participants = [];
@@ -96,7 +100,7 @@ function pickWinnerPage() {
 
 
     form.addEventListener('submit', (event) => {
-        sound.play();
+        playSound();
         event.preventDefault();
         const formData = new FormData(form);
         const name = formData.get('nameData');
@@ -120,7 +124,7 @@ function pickWinnerPage() {
 
 // get pseudorandom values for common random picks (like 1-10 and 1-100)
 function GetRandomBetweenNumbers(max) {
-    sound.play();
+    playSound();
     let min = 1;
     const resultNumber = getRndInteger(min, max + 1);
     resultElm.innerText = `${resultNumber}`; 
@@ -128,7 +132,7 @@ function GetRandomBetweenNumbers(max) {
 
 // Return pseudorandom from user given range - form is dynamically created
 function GetRandomBetweenUserGiven() {
-    sound.play();
+    playSound();
     clearElements();
 
     const form = document.createElement("form");
@@ -159,6 +163,7 @@ function GetRandomBetweenUserGiven() {
 
     form.addEventListener('submit', (event) => {
         event.preventDefault();
+        playSound();
         const formData = new FormData(form);
         const min = Number.parseInt(formData.get('firstNumber'));
         const max = Number.parseInt(formData.get('secondNumber'));
