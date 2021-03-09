@@ -6,6 +6,7 @@ const resultElm = document.querySelector("#results");
 const selectorsElm = document.querySelector("#selectors");
 const listElm = document.querySelector("#list");
 const body = document.querySelector('body');
+const sound = new Audio("./sounds/clickNoNoise.mp3")
 
 
 function clearElements() {
@@ -16,6 +17,7 @@ function clearElements() {
 }
 // get pseudorandom between min and max
 function getRndInteger(min, max) {
+    sound.play();
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
@@ -28,15 +30,28 @@ function buttonMaker(text, doWhenClicked) {
     return button;
 }
 
-function giveWinner(obj) {
+function showWinner(obj) {
+    sound.currentTime=0;
+    sound.play();
     clearElements();
     const ul = document.createElement('ul');
-    ul.setAttribute("id", "liststyle");
+    ul.setAttribute("class", "winnerList");
+    listElm.appendChild(ul);
     obj.sort((a,b) => a.value - b.value);
-    resultElm.innerText = `${obj[0].name}`;
+
+    //Show participants in winning order
+    console.log(obj.length);
+    for (let i = 0; i < obj.length; i++) {
+        let li = document.createElement('li');
+        li.setAttribute("class", "winnerListItem");
+        console.log(obj[i].name)
+        li.innerHTML = obj[i].name;
+        ul.appendChild(li);
+    }
 }
 
 function numbersPage() {
+    sound.play();
     clearElements();
     const buttonOne = buttonMaker("Arvo 1 - 2 välillä", "GetRandomBetweenNumbers(2)");
     const buttonTwo = buttonMaker("Arvo 1 - 10 välillä", "GetRandomBetweenNumbers(10)");
@@ -46,6 +61,7 @@ function numbersPage() {
 }
 
 function dicesPage() {
+    sound.play();
     clearElements();
     const buttonOne = buttonMaker("1D4", "GetRandomBetweenNumbers(4)");
     const buttonTwo = buttonMaker("1D6", "GetRandomBetweenNumbers(6)");
@@ -57,6 +73,7 @@ function dicesPage() {
 }
 
 function pickWinnerPage() {
+    sound.play();
     clearElements();
     buttonIsActive = false;
     participants = [];
@@ -68,9 +85,8 @@ function pickWinnerPage() {
     name.setAttribute("type", "text");
     name.setAttribute("name", "nameData");
     name.setAttribute("placeholder", "lisää osallistuja");
-    name.setAttribute("focus", "true");
 
-    const button = buttonMaker("Arvo voittaja", `giveWinner(participants)`);
+    const button = buttonMaker("Arvo voittaja", `showWinner(participants)`);
     
     form.appendChild(name);
     formsElm.appendChild(form);
@@ -80,6 +96,7 @@ function pickWinnerPage() {
 
 
     form.addEventListener('submit', (event) => {
+        sound.play();
         event.preventDefault();
         const formData = new FormData(form);
         const name = formData.get('nameData');
@@ -89,6 +106,7 @@ function pickWinnerPage() {
             "value": value
         }
         participants.push(obj);
+        form.reset();
         let li = document.createElement('li');
         li.setAttribute("class", "listItem");
         ul.appendChild(li);
@@ -102,6 +120,7 @@ function pickWinnerPage() {
 
 // get pseudorandom values for common random picks (like 1-10 and 1-100)
 function GetRandomBetweenNumbers(max) {
+    sound.play();
     let min = 1;
     const resultNumber = getRndInteger(min, max + 1);
     resultElm.innerText = `${resultNumber}`; 
@@ -109,6 +128,7 @@ function GetRandomBetweenNumbers(max) {
 
 // Return pseudorandom from user given range - form is dynamically created
 function GetRandomBetweenUserGiven() {
+    sound.play();
     clearElements();
 
     const form = document.createElement("form");
