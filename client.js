@@ -106,13 +106,15 @@ function pickWinnerPage() {
         let sameName = false;
         const formData = new FormData(form);
         const name = formData.get('nameData');
+
+        // Check is given name is already on list
         participants.forEach(item => {
             if (item.name == name) {
-                console.log("on jo listalla")
                 sameName = true;
             }
         })
 
+        // Only add to raffle if name is unigue
         if (!sameName) {
             const value = Math.random();
             const obj = {
