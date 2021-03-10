@@ -91,6 +91,7 @@ function pickWinnerPage() {
     name.setAttribute("placeholder", "ADD PARTICIPANT");
 
     const button = buttonMaker("DRAW WINNER", `showWinner(participants)`);
+    button.setAttribute("class", "button-primary");
     
     form.appendChild(name);
     formsElm.appendChild(form);
@@ -153,6 +154,7 @@ function GetRandomBetweenUserGiven() {
     
     const button = document.createElement("button");
     button.setAttribute("id", "numbersInput");
+    button.setAttribute("class", "button-primary");
     button.innerHTML = "DRAW";
 
     form.appendChild(firstNumber);

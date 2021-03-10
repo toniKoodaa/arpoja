@@ -1,11 +1,22 @@
 * {
     box-sizing: border-box;
-    margin: 10;
-    padding: 10;
+    margin: 0;
+    padding: 0;
+}
+
+#nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: rgb(68, 0, 255);
+    color: white;
+    text-align: center;
 }
 
 #title {
-    padding-top: 20px;
+    padding-top: 15px;
+    margin-top: 5px;
     text-align: center;
 }
 
@@ -27,7 +38,7 @@
 .gridItem {
     margin: 0.1em;
     width: auto;
-    height: 100px;
+    height: 60px;
 }
 
 .flexCenter {
@@ -82,4 +93,14 @@
 
 #numbersInput {
     margin: 2px;
+}
+
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
 }
