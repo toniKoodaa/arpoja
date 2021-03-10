@@ -57,10 +57,10 @@ function showWinner(obj) {
 function numbersPage() {
     playSound();
     clearElements();
-    const buttonOne = buttonMaker("Draw between 1-2", "GetRandomBetweenNumbers(2)");
-    const buttonTwo = buttonMaker("Draw between 1-10", "GetRandomBetweenNumbers(10)");
-    const buttonThree = buttonMaker("Draw between 1-100", "GetRandomBetweenNumbers(100)");
-    const buttonFore = buttonMaker("Draw between A - B", "GetRandomBetweenUserGiven()");
+    const buttonOne = buttonMaker("Draw 1-2", "GetRandomBetweenNumbers(2)");
+    const buttonTwo = buttonMaker("Draw 1-10", "GetRandomBetweenNumbers(10)");
+    const buttonThree = buttonMaker("Draw 1-100", "GetRandomBetweenNumbers(100)");
+    const buttonFore = buttonMaker("Draw A - B", "GetRandomBetweenUserGiven()");
     templateElm.append(buttonOne, buttonTwo, buttonThree, buttonFore);
 }
 
@@ -103,22 +103,35 @@ function pickWinnerPage() {
     form.addEventListener('submit', (event) => {
         playSound();
         event.preventDefault();
+        let sameName = false;
         const formData = new FormData(form);
         const name = formData.get('nameData');
-        const value = Math.random();
-        const obj = {
+        participants.forEach(item => {
+            if (item.name == name) {
+                console.log("on jo listalla")
+                sameName = true;
+            }
+        })
+
+        if (!sameName) {
+            const value = Math.random();
+            const obj = {
             "name": name,
             "value": value
-        }
-        participants.push(obj);
-        form.reset();
-        let li = document.createElement('li');
-        li.setAttribute("class", "listItem");
-        ul.appendChild(li);
-        li.innerHTML = name;
-        if (participants.length >= 2 && buttonIsActive === false) {
-            buttonIsActive = true;
-            resultElm.appendChild(button);
+            }
+            participants.push(obj);
+            form.reset();
+            let li = document.createElement('li');
+            li.setAttribute("class", "listItem");
+            ul.appendChild(li);
+            li.innerHTML = name;
+            if (participants.length >= 2 && buttonIsActive === false) {
+                buttonIsActive = true;
+                resultElm.appendChild(button);
+            }
+        } else {
+            alert("Name is already on raffle!");
+            form.reset();
         }
     })
 }
