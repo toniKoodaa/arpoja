@@ -1,10 +1,11 @@
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    margin: 10;
+    padding: 10;
 }
 
-.title {
+#title {
+    padding-top: 20px;
     text-align: center;
 }
 
@@ -13,6 +14,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    color:white;
 }
 
 .gridWrapper {
@@ -26,6 +28,13 @@
     margin: 0.1em;
     width: auto;
     height: 100px;
+}
+
+.flexCenter {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 #liststyle {
@@ -56,6 +65,7 @@
 #results {
     display: flex;
     justify-content: center;
+    font-size: xxx-large;
     text-align: center;
 }
 
@@ -73,4 +83,3 @@
 #numbersInput {
     margin: 2px;
 }
-*/

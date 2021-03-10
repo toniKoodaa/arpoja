@@ -4,27 +4,29 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Arpoja</title>
+        <title>RandomNumbers</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <header class="title">
-            <h1>Arpoja</h1>
+        <nav>
+
+        </nav>
+        <header id="title">
+            <h1>RANDOM NUMBERS AND A RAFFLE</h1>
         </header>
         <main>
-            <div id="selectors">
-                <button id="numbers" onClick="numbersPage()"> Arvo numeroita </button>
-                <button id="dices" onClick="dicesPage()"> Heitä noppaa </button>
-                <button id="order" onClick="pickWinnerPage()"> Järjestä arvonta</button>
+            <div id="selectors" >
+                <button id="numbers" onClick="numbersPage()">Draw Number </button>
+                <button id="dices" onClick="dicesPage()">Roll The Dice</button>
+                <button id="order" onClick="pickWinnerPage()">Arrange A Raffle</button>
             </div>
             <div id="template" class="gridWrapper"></div>
             <div id="forms" class="flexCenter"></div>
             <div id="list" class="flexCenter"></div>
-            <h2 id="results" class="flexCenter"></h2>
-
+            <div id="results"></div>
         </main>
         <script src="client.js" async defer></script>
     </body>

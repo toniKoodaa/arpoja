@@ -57,10 +57,10 @@ function showWinner(obj) {
 function numbersPage() {
     playSound();
     clearElements();
-    const buttonOne = buttonMaker("Arvo 1 - 2 välillä", "GetRandomBetweenNumbers(2)");
-    const buttonTwo = buttonMaker("Arvo 1 - 10 välillä", "GetRandomBetweenNumbers(10)");
-    const buttonThree = buttonMaker("Arvo 1 - 100 välillä", "GetRandomBetweenNumbers(100)");
-    const buttonFore = buttonMaker("Arvo kahden luvun välillä", "GetRandomBetweenUserGiven()");
+    const buttonOne = buttonMaker("Draw between 1-2", "GetRandomBetweenNumbers(2)");
+    const buttonTwo = buttonMaker("Draw between 1-10", "GetRandomBetweenNumbers(10)");
+    const buttonThree = buttonMaker("Draw between 1-100", "GetRandomBetweenNumbers(100)");
+    const buttonFore = buttonMaker("Draw between A - B", "GetRandomBetweenUserGiven()");
     templateElm.append(buttonOne, buttonTwo, buttonThree, buttonFore);
 }
 
@@ -88,9 +88,9 @@ function pickWinnerPage() {
     name.setAttribute("id", "nameInput");
     name.setAttribute("type", "text");
     name.setAttribute("name", "nameData");
-    name.setAttribute("placeholder", "lisää osallistuja");
+    name.setAttribute("placeholder", "ADD PARTICIPANT");
 
-    const button = buttonMaker("Arvo voittaja", `showWinner(participants)`);
+    const button = buttonMaker("DRAW WINNER", `showWinner(participants)`);
     
     form.appendChild(name);
     formsElm.appendChild(form);
@@ -143,17 +143,17 @@ function GetRandomBetweenUserGiven() {
     firstNumber.setAttribute("id", "numbersInput");
     firstNumber.setAttribute("type", "number");
     firstNumber.setAttribute("name", "firstNumber");
-    firstNumber.setAttribute("placeholder", "Mista");
+    firstNumber.setAttribute("placeholder", "A");
 
     const secondNumber = document.createElement("input");
     secondNumber.setAttribute("id", "numbersInput");
     secondNumber.setAttribute("type", "number");
     secondNumber.setAttribute("name", "secondNumber")
-    secondNumber.setAttribute("placeholder", "Mihin");
+    secondNumber.setAttribute("placeholder", "B");
     
     const button = document.createElement("button");
     button.setAttribute("id", "numbersInput");
-    button.innerHTML = "Arvo";
+    button.innerHTML = "DRAW";
 
     form.appendChild(firstNumber);
     form.appendChild(secondNumber);
