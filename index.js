@@ -1,11 +1,9 @@
-
 // Create or select needed elements
 const templateElm = document.querySelector("#template");
 const formsElm = document.querySelector("#forms");
 const resultElm = document.querySelector("#results");
 const selectorsElm = document.querySelector("#selectors");
 const listElm = document.querySelector("#list");
-const body = document.querySelector('body');
 const sound = new Audio("./sounds/PS5click.mp3")
 
 function playSound() {
@@ -13,17 +11,11 @@ function playSound() {
     sound.play();
 }
 
-
 function clearElements() {
     templateElm.innerHTML = "";
     formsElm.innerHTML = "";
     resultElm.innerHTML = "";
     listElm.innerHTML = "";
-}
-// get pseudorandom between min and max
-function getRndInteger(min, max) {
-    playSound();
-    return Math.floor(Math.random() * (max - min)) + min;
 }
 
 function buttonMaker(text, doWhenClicked) {
@@ -44,7 +36,6 @@ function showWinner(obj) {
     obj.sort((a,b) => a.value - b.value);
 
     //Show participants in winning order
-    console.log(obj.length);
     for (let i = 0; i < obj.length; i++) {
         let li = document.createElement('li');
         li.setAttribute("class", "winnerListItem");
@@ -99,9 +90,7 @@ function pickWinnerPage() {
     ul.setAttribute("id", "liststyle");
     listElm.appendChild(ul);
 
-
     form.addEventListener('submit', (event) => {
-        playSound();
         event.preventDefault();
         let sameName = false;
         const formData = new FormData(form);
@@ -114,7 +103,7 @@ function pickWinnerPage() {
             }
         })
 
-        // Only add to raffle if name is unigue
+        // Only add to raffle if name is unique
         if (!sameName) {
             const value = Math.random();
             const obj = {
@@ -144,6 +133,12 @@ function GetRandomBetweenNumbers(max) {
     let min = 1;
     const resultNumber = getRndInteger(min, max + 1);
     resultElm.innerText = `${resultNumber}`; 
+}
+
+// get pseudorandom between min and max
+function getRndInteger(min, max) {
+    playSound();
+    return Math.floor(Math.random() * (max - min)) + min;
 }
 
 // Return pseudorandom from user given range - form is dynamically created
