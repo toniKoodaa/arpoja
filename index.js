@@ -21,7 +21,7 @@ function clearElements() {
 function buttonMaker(text, doWhenClicked) {
     const button = document.createElement('button');
     button.setAttribute("id", "buttons");
-    button.setAttribute("class", "gridItem")
+    button.setAttribute("class", "btn-clickers")
     button.setAttribute("onClick", doWhenClicked);
     button.innerText = text.toString();
     return button;
@@ -74,15 +74,17 @@ function pickWinnerPage() {
     participants = [];
     const form = document.createElement("form");
     form.setAttribute("id", "participantForm")
+    form.setAttribute("class", "formstyle")
 
     const name = document.createElement("input");
     name.setAttribute("id", "nameInput");
     name.setAttribute("type", "text");
     name.setAttribute("name", "nameData");
+    name.setAttribute("class", "formInput");
     name.setAttribute("placeholder", "ADD PARTICIPANT");
 
     const button = buttonMaker("DRAW WINNER", `showWinner(participants)`);
-    button.setAttribute("class", "button-primary");
+    button.setAttribute("class", "btn-clickers");
     
     form.appendChild(name);
     formsElm.appendChild(form);
@@ -164,7 +166,7 @@ function GetRandomBetweenUserGiven() {
     
     const button = document.createElement("button");
     button.setAttribute("id", "numbersInput");
-    button.setAttribute("class", "button-primary");
+    button.setAttribute("class", "btn-clickers");
     button.innerHTML = "DRAW";
 
     form.appendChild(firstNumber);

@@ -1,8 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,400&display=swap');
+:root {
+--st-patricks-blue: #1d2f6fff;
+--cornflower-blue: #8390faff;
+--maize-crayola: #fac748ff;
+--lavender-blush: #f9e9ecff;
+--tickle-me-pink: #f88dadff;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0 5px 0 5px;
-    background-color: whitesmoke;
+}
+
+html {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    background-color: var(--st-patricks-blue);
 }
 
 .header {
@@ -11,19 +25,36 @@
     top: 0;
     width: 100%;
     height: 1.5em;
-    background-color: blueviolet;
-    color: white;
+    background-color: var(--maize-crayola);
+    color: var(--st-patricks-blue);
+    overflow: hidden;
     text-align: center;
     font-size: larger;
 }
 
-#selectors {
+.container {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    padding-top: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     margin-top: 25px;
+}
+
+.btn-clickers {
+    padding: 0.6em;
+    cursor: pointer;
+    margin: 3px;
+    border: 0.2em rgba(0,0,0,0.1);
+    border-radius: 0.2em;
+    background-color: rgba(255,255,255,0.75);
+    color: black;
+}
+
+.btn-clickers:hover {
+    background-color: rgba(255,255,255,0.25);
+    color: white;
 }
 
 .gridWrapper {
@@ -38,6 +69,22 @@
     width: auto;
     height: 60px;
 }
+
+.formInput {
+    padding: 0.6em;
+    width: 300px;
+    width: 100%;
+    text-decoration: none;
+    margin: 3px;
+    border: 0.2em rgba(0,0,0,0.1);
+    border-radius: 0.2em;
+    background-color: rgba(255,255,255,0.75);
+}
+
+.formInput:hover {
+    cursor: pointer;
+}
+
 
 .flexCenter {
     display: flex;
@@ -57,26 +104,30 @@
 .winnerList {
     display: flex;
     padding-left: 20px;
+    color: white;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
     list-style-type: decimal;
 }
 
 .winnerList :first-child{
-    font-size: xx-large;
+    justify-content: center;
+    font-size: 80px;
     text-decoration: underline;
 }
 
 .listItem {
     display: flex;
+    font-size: 16px;
+    padding: 15px;
+    color: white;
 }
 
 #results {
     display: flex;
     justify-content: center;
-    font-size: xxx-large;
+    font-size: 150px;
     text-align: center;
+    color: white;
 }
 
 #forms {
@@ -90,22 +141,16 @@
     justify-content: center;
 }
 
-#numbersInput {
-    margin: 2px;
-}
-
 #footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color:blueviolet;
-    color: white;
+    background-color:var(--maize-crayola);
     text-align: center;
 }
 
 #footer a {
-    list-style: none;
     background-color:inherit;
-    color: white;
+    color: var(--st-patricks-blue);
 }
