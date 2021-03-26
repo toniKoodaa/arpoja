@@ -1,3 +1,6 @@
+/* Random number generator */
+
+
 // Create or select needed elements
 const templateElm = document.querySelector("#template");
 const formsElm = document.querySelector("#forms");
