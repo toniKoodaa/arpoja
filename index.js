@@ -42,7 +42,6 @@ function showWinner(obj) {
     for (let i = 0; i < obj.length; i++) {
         let li = document.createElement('li');
         li.setAttribute("class", "winnerListItem");
-        console.log(obj[i].name)
         li.innerHTML = obj[i].name;
         ul.appendChild(li);
     }
@@ -123,7 +122,7 @@ function pickWinnerPage() {
             li.innerHTML = name;
             if (participants.length >= 2 && buttonIsActive === false) {
                 buttonIsActive = true;
-                resultElm.appendChild(button);
+                formsElm.appendChild(button);
             }
         } else {
             alert("Name is already on raffle!");

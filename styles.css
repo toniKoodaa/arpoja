@@ -108,6 +108,7 @@ html {
     color: white;
     flex-direction: column;
     list-style-type: decimal;
+    margin-bottom: 30px;
 }
 
 .winnerList :first-child{
