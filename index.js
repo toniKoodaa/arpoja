@@ -156,12 +156,14 @@ function GetRandomBetweenUserGiven() {
 
     const firstNumber = document.createElement("input");
     firstNumber.setAttribute("id", "numbersInput");
+    firstNumber.setAttribute("class", "formInput");
     firstNumber.setAttribute("type", "number");
     firstNumber.setAttribute("name", "firstNumber");
     firstNumber.setAttribute("placeholder", "A");
 
     const secondNumber = document.createElement("input");
     secondNumber.setAttribute("id", "numbersInput");
+    secondNumber.setAttribute("class", "formInput");
     secondNumber.setAttribute("type", "number");
     secondNumber.setAttribute("name", "secondNumber")
     secondNumber.setAttribute("placeholder", "B");
@@ -183,8 +185,10 @@ function GetRandomBetweenUserGiven() {
         const formData = new FormData(form);
         const min = Number.parseInt(formData.get('firstNumber'));
         const max = Number.parseInt(formData.get('secondNumber'));
-
         const resultNumber = getRndInteger(min, max + 1);
-        resultElm.innerText = `${resultNumber}`; 
+        const showResult = document.createElement("div");
+        showResult.setAttribute("class", "resultItem");
+        showResult.innerText = `${resultNumber}`
+        resultElm.appendChild(showResult);
     })
 }
